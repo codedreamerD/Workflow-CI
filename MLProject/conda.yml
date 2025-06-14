@@ -1,0 +1,10 @@
+name: mlflow-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pandas
+  - scikit-learn
+  - mlflow
+  - numpy
+  - joblib
