@@ -6,9 +6,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.model_selection import train_test_split
 import os
-import dagshub
-
-dagshub.init(repo_owner='codedreamerD', repo_name='SMSML_Fadhilah-Nurrahmayanti', mlflow=True)
 
 mlflow.set_tracking_uri("https://dagshub.com/codedreamerD/Workflow-CI.mlflow")
 
