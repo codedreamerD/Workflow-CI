@@ -1,20 +1,20 @@
 FROM continuumio/miniconda3
 
-# Install MLflow
-RUN conda install -y -c conda-forge mlflow
-
-# Salin file environment dan install environment
-COPY conda.yml /tmp/conda.yml
+# Copy and install environment
+COPY MLProject/conda.yml /tmp/conda.yml
 RUN conda env create -f /tmp/conda.yml && conda clean -afy
 
-# Tambahkan ke PATH
-ENV PATH=/opt/conda/envs/mlflow-env/bin:$PATH
+# Activate environment
+SHELL ["conda", "run", "-n", "mlflow-env", "/bin/bash", "-c"]
 
-# Set direktori kerja
+# Set working directory
 WORKDIR /app
 
-# Salin semua file project ke container
-COPY . /app
+# Copy files
+COPY MLProject /app
 
-# Jalankan script modelling.py (yang sudah handle dagshub.init dan set_tracking_uri)
-CMD ["python", "modelling.py"]
+# Expose MLflow UI port (opsional)
+EXPOSE 5000
+
+# Jalankan ML pipeline (DAGSHUB tracking sudah diatur dari dalam modelling.py)
+CMD ["conda", "run", "-n", "mlflow-env", "python", "modelling.py"]
