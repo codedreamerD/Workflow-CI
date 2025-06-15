@@ -20,4 +20,4 @@ COPY . /app
 EXPOSE 5000
 
 # Run MLflow UI (tracking server) in the background, then run modelling.py
-CMD mlflow server --host 0.0.0.0 --port 5000 & python modelling.py && tail -f /dev/null"
+CMD mlflow server --host 127.0.0.1 --port 5000 & python modelling.py && tail -f /dev/null

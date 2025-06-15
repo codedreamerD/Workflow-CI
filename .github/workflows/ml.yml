@@ -38,7 +38,7 @@ jobs:
           mlflow run MLProject/ --env-manager=local --experiment-name=Student_performance_CI
         shell: bash -l {0}
 
-      - name: Upload trained model
+      - name: Upload trained model to GitHub Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: trained-model
