@@ -6,8 +6,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.model_selection import train_test_split
 import os
+import dagshub
 
-mlflow.set_tracking_uri("https://dagshub.com/codedreamerD/SMSML_Fadhilah-Nurrahmayanti.mlflow")
+dagshub.init(repo="codedreamerD/Workflow-CI", run="mlflow")
+
+mlflow.set_tracking_uri("https://dagshub.com/codedreamerD/Workflow-CI.mlflow")
 
 # Set the experiment name
 mlflow.set_experiment("Student_performance_CI")
