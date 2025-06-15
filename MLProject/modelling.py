@@ -7,7 +7,11 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from sklearn.model_selection import train_test_split
 import os
 
+<<<<<<< HEAD
 mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
+=======
+mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://0.0.0.0:5000"))
+>>>>>>> 14e186dc008dad52e5b4d94e120364042c9c20a9
 
 # Set the experiment name
 mlflow.set_experiment("Student_performance_CI")
@@ -69,4 +73,8 @@ with mlflow.start_run():
 output_path = "./models/best_model.pkl"
 os.makedirs(os.path.dirname(output_path), exist_ok=True)
 joblib.dump(model, output_path)
+<<<<<<< HEAD
 print(f"Model saved to: {output_path}")
+=======
+print(f"Model saved to: {output_path}")
+>>>>>>> 14e186dc008dad52e5b4d94e120364042c9c20a9
