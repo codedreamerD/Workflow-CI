@@ -27,7 +27,7 @@ jobs:
 
       - name: Run MLflow Project
         run: |
-          mlflow run MLProject/ --env-manager=local --experiment-name=Student_performance_CI
+          mlflow run MLProject/ --env-manager=local
         shell: bash -l {0}
 
       - name: Upload Best Model to GitHub Artifacts

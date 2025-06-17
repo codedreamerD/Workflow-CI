@@ -1,10 +1,11 @@
 import pandas as pd
+import numpy as np
 import mlflow
 import mlflow.sklearn
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
-mlflow.set_experiment("Experiment Student Performance")
+mlflow.set_experiment("Student_Performance_CI")
 
 # Load data
 data = pd.read_csv("students_performance_preprocessed.csv")
