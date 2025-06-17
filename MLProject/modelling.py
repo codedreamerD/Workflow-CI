@@ -6,7 +6,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 import os
 
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
 mlflow.set_experiment("Student_performance_CI")
 
 data = pd.read_csv("students_performance_preprocessed.csv")
