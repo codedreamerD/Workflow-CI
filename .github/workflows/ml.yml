@@ -1,4 +1,4 @@
-name: Workflow-CI Skor Mahasiswa (Advanced)
+name: Workflow-CI
 
 on:
   push:
