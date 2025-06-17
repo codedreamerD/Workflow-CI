@@ -1,8 +1,7 @@
-name: student-performance-project
+name: student_performance-ci
 
 conda_env: conda.yml
 
 entry_points:
   main:
-    parameters: {}
-    command: "python modelling_tuning.py"
+    command: "python modelling.py"

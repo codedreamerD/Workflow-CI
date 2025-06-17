@@ -1,23 +1,23 @@
 FROM continuumio/miniconda3
 
-# Install MLflow
+# Install MLflow and other dependencies
 RUN conda install -y -c conda-forge mlflow
 
-# Copy conda environment
+# Copy conda environment file and create environment
 COPY conda.yml /tmp/conda.yml
 RUN conda env create -f /tmp/conda.yml && conda clean -afy
 
-# Set conda env path
+# Add environment to PATH
 ENV PATH=/opt/conda/envs/mlflow-env/bin:$PATH
 
-# Working directory
+# Set working directory
 WORKDIR /app
 
 # Copy project files
 COPY . /app
 
-# Expose port if needed (optional)
+# Expose port for MLflow tracking UI
 EXPOSE 5000
 
-# Run training
-CMD ["python", "modelling_tuning.py"]
+# Run MLflow UI (tracking server) in the background, then run modelling.py
+CMD mlflow server --host 0.0.0.0 --port 5000 & python modelling.py && tail -f /dev/null"
