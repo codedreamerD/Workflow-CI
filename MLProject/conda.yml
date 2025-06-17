@@ -7,5 +7,5 @@ dependencies:
   - pandas
   - scikit-learn
   - mlflow
-  - joblib
   - numpy
+  - joblib

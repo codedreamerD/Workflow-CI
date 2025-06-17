@@ -1,5 +1,7 @@
-name: mlflow_project
+name: student_performance_ci
+
 conda_env: conda.yml
+
 entry_points:
   main:
     parameters: {}
