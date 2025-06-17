@@ -7,17 +7,17 @@ RUN conda install -y -c conda-forge mlflow
 COPY conda.yml /tmp/conda.yml
 RUN conda env create -f /tmp/conda.yml && conda clean -afy
 
-# Update path
+# Set conda env path
 ENV PATH=/opt/conda/envs/mlflow-env/bin:$PATH
 
-# Set working directory
+# Working directory
 WORKDIR /app
 
 # Copy project files
 COPY . /app
 
-# Expose port for MLflow local
+# Expose port if needed (optional)
 EXPOSE 5000
 
-# Jalankan MLflow server + training
-CMD mlflow server --host 0.0.0.0 --port 5000 & python modelling.py && tail -f /dev/null
+# Run training
+CMD ["python", "modelling_tuning.py"]
