@@ -16,10 +16,8 @@ y = data['performance_level']
 # Split data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)
 
-# Ambil contoh input untuk log model
 input_example = X_train.iloc[:5]
 
-# Mulai MLflow run
 with mlflow.start_run():
     mlflow.autolog()  # otomatis log param, metric, dan model
 
