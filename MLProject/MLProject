@@ -1,7 +1,6 @@
-name: student_performance-ci
-
+name: mlflow_project
 conda_env: conda.yml
-
 entry_points:
   main:
+    parameters: {}
     command: "python modelling.py"
