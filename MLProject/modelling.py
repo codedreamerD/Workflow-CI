@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 mlflow.set_experiment("Experiment Student Performance")
 
 # Load data
-data = pd.read_csv("dataset_preprocessed/students_performance_preprocessed.csv")
+data = pd.read_csv("students_performance_preprocessed.csv")
 
 # Fitur dan target
 X = data.drop(['math score', 'reading score', 'writing score', 'average_score', 'performance_level'], axis=1)
