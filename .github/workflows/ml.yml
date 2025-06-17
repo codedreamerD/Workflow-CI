@@ -40,9 +40,8 @@ jobs:
   docker:
     needs: train-and-upload
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Log in to Docker Hub
@@ -51,11 +50,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker Image with MLflow
-        run: |
-          mlflow build-docker -n student-performance-tuning -f MLProject/MLProject
-
-      - name: Push Docker Image
-        run: |
-          docker tag student-performance-tuning ${{ secrets.DOCKER_USERNAME }}/workflow-ci:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/workflow-ci:latest
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: MLProject
+          file: MLProject/dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/workflow-ci:latest
