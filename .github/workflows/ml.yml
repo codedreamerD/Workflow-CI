@@ -25,15 +25,10 @@ jobs:
           auto-activate-base: false
           use-mamba: true
 
-      - name: Create conda env manually
-        run: |
-          conda env create -f MLProject/conda.yml -n mlflow-env
-          conda activate mlflow-env
-          conda info --envs
-
       - name: Run MLflow Project
         run: |
-          conda run -n mlflow-env mlflow run MLProject/ --env-manager=local
+          mlflow run MLProject/ --env-manager=local --experiment-name=Student_performance_CI
+        shell: bash -l {0}
 
       - name: Upload Best Model to GitHub Artifacts
         uses: actions/upload-artifact@v4
@@ -43,7 +38,7 @@ jobs:
           if-no-files-found: warn
 
   docker:
-    needs: train-and-upload
+    needs: train
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
