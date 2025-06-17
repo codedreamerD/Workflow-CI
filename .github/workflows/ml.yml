@@ -38,7 +38,7 @@ jobs:
           if-no-files-found: warn
 
   docker:
-    needs: train
+    needs: train-and-upload
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
